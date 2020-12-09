@@ -1,0 +1,26 @@
+.product {
+  padding: 0;
+  align-items: center;
+
+  .card {
+    margin-top: 25px;
+    justify-content: center;
+    width: 300px;
+
+    .card-title {
+      height: 40px;
+    }
+    .card-img-top {
+      height: 300px !important;
+    }
+
+    .btn {
+      width: 100%;
+      border-radius: 50px;
+    }
+  }
+}
+
+.row {
+  justify-content: center;
+}
