@@ -10,7 +10,6 @@ import {
   countDuplicatesItemArray,
   removeItemArray,
 } from "../../utils/ArrayFunc";
-
 import "./cart.scss";
 
 export default function Cart(props) {
@@ -69,6 +68,7 @@ export default function Cart(props) {
     const arrayItemsCart = productsCart;
     arrayItemsCart.push(id);
     localStorage.setItem(STORAGE_PRODUCT_CART, arrayItemsCart);
+    console.log("INcrementado");
     // getProductsCart();
   };
 
@@ -76,6 +76,7 @@ export default function Cart(props) {
     const arrayItemsCart = productsCart;
     const result = removeItemArray(arrayItemsCart, id.toString());
     localStorage.setItem(STORAGE_PRODUCT_CART, arrayItemsCart);
+    console.log("Decrementado");
   };
 
   return (
@@ -157,13 +158,7 @@ function CartContentProducts(props) {
 }
 
 function RenderProduct(props) {
-  const {
-    product,
-    cantidad,
-    increaseQuantity,
-    decreaseQuantity,
-    getProductsCart,
-  } = props;
+  const { product, cantidad, increaseQuantity, decreaseQuantity } = props;
 
   return (
     <div className="cart-content__product">

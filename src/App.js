@@ -5,13 +5,13 @@ import useFetch from "./hooks/useFetch";
 import { urlApiProductos } from "./utils/constants";
 import { STORAGE_PRODUCT_CART } from "./utils/constants";
 import { ToastContainer, toast } from "react-toastify";
-import Toast from "react-bootstrap/Toast";
+import "react-toastify/dist/ReactToastify.css";
+
 //import productos from "./db/dbProducts.json";
 
 function App(props) {
   const products = useFetch(urlApiProductos, null);
   const [productsCart, setProductsCart] = useState([]);
-  const [showToast, setShowToast] = useState(false);
 
   useEffect(() => {
     getProductsCart();
@@ -43,15 +43,27 @@ function App(props) {
     setProductsCart(idsProducts);
     localStorage.setItem(STORAGE_PRODUCT_CART, productsCart);
     getProductsCart();
+    show();
     // console.log(`Haz agregado ${name} con id ${id}`);
   };
 
   const show = () => {
-    setShowToast(true);
+    toast.success("Producto agregado al carrito");
   };
 
   return (
     <div className="App">
+      <ToastContainer
+        position="top-center"
+        autoClose={2300}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <TopMenu
         productsCart={productsCart}
         emptyCart={emptyCart}
@@ -63,17 +75,6 @@ function App(props) {
         addProductCart={addProductCart}
         show={show}
       />
-      <Toast
-        show={showToast}
-        onClose={() => setShowToast(false)}
-        delay={3000}
-        autohide
-      >
-        <Toast.Header>
-          <strong className="mr-auto">Producto añadido.</strong>
-        </Toast.Header>
-        <Toast.Body>Se ha añadido correctamente al carrito.</Toast.Body>
-      </Toast>
     </div>
   );
 }

@@ -4,7 +4,7 @@ import "./product.scss";
 import { BASE_PATH } from "../../utils/constants";
 
 export default function Product(props) {
-  const { product, addProductCart, show } = props;
+  const { product, addProductCart } = props;
 
   return (
     <Col xs={12} className="product">
@@ -16,9 +16,7 @@ export default function Product(props) {
           <Card.Text>{product.price.toFixed(2)}</Card.Text>
           <Button
             variant="outline-primary"
-            onClick={
-              () => addProductCart(product.id, product.name) /* () => show() */
-            }
+            onClick={() => addProductCart(product.id, product.name)}
           >
             Añadir al carrito
           </Button>
